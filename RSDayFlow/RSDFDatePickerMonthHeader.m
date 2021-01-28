@@ -109,20 +109,17 @@
 
 - (UIFont *)monthLabelFont
 {
-    return [UIFont fontWithName:@"HelveticaNeue" size:16.0f];
+    return [UIFont fontWithName:@"Verlag-Bold" size:16.0f];
 }
 
 - (UIColor *)monthLabelTextColor
 {
-    if (@available(iOS 13, *)) {
-        return [UIColor labelColor];
-    }
-    return [UIColor blackColor];
+    return [UIColor colorWithRed:0.0/255.0f green:198.0/255.0f blue:22/255.0f alpha:1.0f];
 }
 
 - (UIColor *)currentMonthLabelTextColor
 {
-    return [UIColor colorWithRed:32/255.0f green:135/255.0f blue:252/255.0f alpha:1.0f];
+    return [UIColor colorWithRed:0.0/255.0f green:198.0/255.0f blue:22/255.0f alpha:1.0f];
 }
 
 @end
