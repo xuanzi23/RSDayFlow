@@ -217,7 +217,7 @@ CGFloat roundOnBase(CGFloat x, CGFloat base) {
     self.overlayImageView.hidden = !self.isHighlighted || self.isNotThisMonth || self.isOutOfRange;
     self.markImageView.hidden = !self.isMarked || self.isNotThisMonth || self.isOutOfRange;
     self.dividerImageView.hidden = self.isNotThisMonth;
-
+    
     if (self.isNotThisMonth) {
         self.dateLabel.textColor = [self notThisMonthLabelTextColor];
         self.dateLabel.font = [self dayLabelFont];
@@ -266,7 +266,7 @@ CGFloat roundOnBase(CGFloat x, CGFloat base) {
             }
         }
     }
-
+    
 }
 
 + (NSCache *)imageCache
@@ -342,6 +342,9 @@ CGFloat roundOnBase(CGFloat x, CGFloat base) {
 
 - (UIColor *)dayLabelTextColor
 {
+    if (@available(iOS 13, *)) {
+        return [UIColor labelColor];
+    }
     return [UIColor blackColor];
 }
 

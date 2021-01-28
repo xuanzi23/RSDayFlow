@@ -34,11 +34,11 @@
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
-	self = [super initWithFrame:frame];
-	if (self) {
-		[self commonInitializer];
-	}
-	return self;
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self commonInitializer];
+    }
+    return self;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
@@ -73,13 +73,16 @@
     if ([self.delegate respondsToSelector:@selector(pickerCollectionViewWillLayoutSubviews:)]) {
         [self.delegate pickerCollectionViewWillLayoutSubviews:self];
     }
-	[super layoutSubviews];
+    [super layoutSubviews];
 }
 
 #pragma mark - Atrributes of the View
 
 - (UIColor *)selfBackgroundColor
 {
+    if (@available(iOS 13, *)) {
+        return [UIColor groupTableViewBackgroundColor];
+    }
     return [UIColor whiteColor];
 }
 

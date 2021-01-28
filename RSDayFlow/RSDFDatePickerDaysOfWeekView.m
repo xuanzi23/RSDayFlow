@@ -279,6 +279,9 @@
 
 - (UIColor *)selfBackgroundColor
 {
+    if (@available(iOS 13, *)) {
+        return [UIColor groupTableViewBackgroundColor];
+    }
     return [UIColor colorWithRed:248.0/255 green:248.0/255 blue:248.0/255 alpha:1.0];
 }
 
@@ -341,6 +344,9 @@
 
 - (UIColor *)dayOfWeekLabelTextColor
 {
+    if (@available(iOS 13, *)) {
+        return [UIColor labelColor];
+    }
     return [UIColor blackColor];
 }
 
