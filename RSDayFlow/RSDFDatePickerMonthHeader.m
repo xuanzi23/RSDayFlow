@@ -114,12 +114,12 @@
 
 - (UIColor *)monthLabelTextColor
 {
-    return [UIColor colorWithRed:0.0/255.0f green:198.0/255.0f blue:22/255.0f alpha:1.0f];
+    return [UIColor colorWithRed:0.0/255.0f green:198.0/255.0f blue:233.0/255.0f alpha:1.0f];
 }
 
 - (UIColor *)currentMonthLabelTextColor
 {
-    return [UIColor colorWithRed:0.0/255.0f green:198.0/255.0f blue:22/255.0f alpha:1.0f];
+    return [UIColor colorWithRed: 0.0/255.0f green: 198.0/255.0f blue: 233.0/255.0f alpha:1.0f];
 }
 
 @end
