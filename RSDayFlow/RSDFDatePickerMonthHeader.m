@@ -63,7 +63,7 @@
         _dateLabel = [[UILabel alloc] initWithFrame:frame];
         _dateLabel.backgroundColor = [UIColor clearColor];
         _dateLabel.opaque = NO;
-        _dateLabel.textAlignment = NSTextAlignmentCenter;
+        _dateLabel.textAlignment = NSTextAlignmentLeft;
         _dateLabel.font = [self monthLabelFont];
         _dateLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [self addSubview:_dateLabel];
@@ -90,7 +90,7 @@
 
 - (RSDFMonthsDisplayStyle)displayStyle
 {
-    return RSDFMonthsDisplayStyleShortUppercase;
+    return RSDFMonthsDisplayStyleFull;
 }
 
 #pragma mark - Attributes of the View
