@@ -311,7 +311,7 @@
 
 - (RSDFDaysOfWeekDisplayStyle)displayStyle
 {
-    return RSDFDaysOfWeekDisplayStyleAuto;
+    return RSDFDaysOfWeekDisplayStyleMedium;
 }
 
 #pragma mark - Attributes of Subviews
