@@ -194,12 +194,7 @@
         if (maxWidthOfSymbols > maxAvailableItemWidth) { // it did not fit
             
             maxWidthOfSymbols = [self maxWidthOfSymbols:self.shortStandaloneWeekdaySymbols];
-            if (maxWidthOfSymbols > maxAvailableItemWidth) { // it did not fit -> use very short symbols
-                
-                symbolsToUse = [self.veryShortStandaloneWeekdaySymbols copy];
-            } else {
-                symbolsToUse = [self.shortStandaloneWeekdaySymbols copy];
-            }
+            symbolsToUse = [self.shortStandaloneWeekdaySymbols copy];
         } else {
             symbolsToUse = [self.standaloneWeekdaySymbols copy];
         }
@@ -311,7 +306,7 @@
 
 - (RSDFDaysOfWeekDisplayStyle)displayStyle
 {
-    return RSDFDaysOfWeekDisplayStyleMedium;
+    return RSDFDaysOfWeekDisplayStyleAuto;
 }
 
 #pragma mark - Attributes of Subviews
