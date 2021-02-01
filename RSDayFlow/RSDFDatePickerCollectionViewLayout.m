@@ -41,6 +41,7 @@
     if (self) {
         [self commonInitializer];
         _direction = RSDFDatePickerCollectionViewLayoutDirectionLeftToRight;
+        self.sectionHeadersPinToVisibleBounds = YES;
     }
     return self;
 }
@@ -51,6 +52,7 @@
     if (self) {
         [self commonInitializer];
         _direction = RSDFDatePickerCollectionViewLayoutDirectionLeftToRight;
+        self.sectionHeadersPinToVisibleBounds = YES;
     }
     return self;
 }
@@ -62,6 +64,7 @@
         [self commonInitializer];
         _direction = direction;
     }
+    self.sectionHeadersPinToVisibleBounds = YES;
     return self;
 }
 
@@ -69,6 +72,7 @@
 {
     self.minimumLineSpacing = [self selfMinimumLineSpacing];
     self.minimumInteritemSpacing = [self selfMinimumInteritemSpacing];
+    self.sectionHeadersPinToVisibleBounds = YES;
 }
 
 #pragma mark - Atrributes of the Layout
