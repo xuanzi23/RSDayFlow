@@ -102,7 +102,7 @@
 
 - (UIEdgeInsets)selfEdgeInsets
 {
-    return UIEdgeInsetsZero;
+    return UIEdgeInsetsMake(0, 16, 0, 16);
 }
 
 #pragma mark - Attributes of Subviews
