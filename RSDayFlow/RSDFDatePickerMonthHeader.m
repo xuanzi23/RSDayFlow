@@ -97,6 +97,9 @@
 
 - (UIColor *)selfBackgroundColor
 {
+    if @available(iOS 13, *) {
+        return [UIColor groupTableViewBackgroundColor];
+    }
     return [UIColor clearColor];
 }
 

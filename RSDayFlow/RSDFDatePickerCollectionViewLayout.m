@@ -41,7 +41,6 @@
     if (self) {
         [self commonInitializer];
         _direction = RSDFDatePickerCollectionViewLayoutDirectionLeftToRight;
-        self.sectionHeadersPinToVisibleBounds = YES;
     }
     return self;
 }
@@ -52,7 +51,6 @@
     if (self) {
         [self commonInitializer];
         _direction = RSDFDatePickerCollectionViewLayoutDirectionLeftToRight;
-        self.sectionHeadersPinToVisibleBounds = YES;
     }
     return self;
 }
@@ -64,7 +62,6 @@
         [self commonInitializer];
         _direction = direction;
     }
-    self.sectionHeadersPinToVisibleBounds = YES;
     return self;
 }
 
