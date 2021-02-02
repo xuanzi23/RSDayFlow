@@ -152,7 +152,7 @@ CGFloat roundOnBase(CGFloat x, CGFloat base) {
 {
     if (!_markImage) {
         NSString *markImageKey = [NSString stringWithFormat:@"img_mark_%@", [self.markImageColor description]];
-        _markImage = [self ellipseImageWithKey:markImageKey frame:self.markImageView.frame color:self.markImageColor];
+        _markImage = [self squareImageWithKey:markImageKey frame:self.markImageView.frame color:self.markImageColor];
     }
     return _markImage;
 }
@@ -170,11 +170,13 @@ CGFloat roundOnBase(CGFloat x, CGFloat base) {
     if (!_markImageView) {
         _markImageView = [[UIImageView alloc] initWithFrame:[self markImageViewFrame]];
         _markImageView.backgroundColor = [UIColor clearColor];
-        _markImageView.contentMode = UIViewContentModeScaleAspectFit;
+        _markImageView.contentMode = UIViewContentModeScaleAspectFill;
+        _markImageView.clipsToBounds = YES;
         
-        UIView *overlay = [[UIView alloc] initWithFrame:CGRectMake(0, 0, _markImageView.frame.size.width, _markImageView.frame.size.height)];
-        [overlay setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.3]];
-        [_markImageView addSubview:overlay];
+        CALayer *sublayer = [CALayer layer];
+        sublayer.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3].CGColor;
+        sublayer.frame = [self markImageViewFrame];
+        [_markImageView.layer addSublayer:sublayer];
         
         _markImageView.image = self.markImage;
     }
