@@ -43,6 +43,7 @@ CGFloat roundOnBase(CGFloat x, CGFloat base) {
 
 @implementation RSDFDatePickerDayCell
 
+@synthesize todayDot = _todayDot;
 @synthesize dateLabel = _dateLabel;
 @synthesize selectedDayImageView = _selectedDayImageView;
 @synthesize overlayImageView = _overlayImageView;
@@ -80,6 +81,8 @@ CGFloat roundOnBase(CGFloat x, CGFloat base) {
     [self addSubview:self.markImageView];
     [self addSubview:self.dividerImageView];
     [self addSubview:self.dateLabel];
+    [self addSubview:self.dateLabel];
+    [self addSubview:self.todayDot];
     
     [self updateSubviews];
 }
@@ -94,6 +97,7 @@ CGFloat roundOnBase(CGFloat x, CGFloat base) {
     self.markImageView.frame = [self markImageViewFrame];
     self.dividerImageView.frame = [self dividerImageViewFrame];
     self.dividerImageView.image = [self dividerImage];
+    self.todayDot.frame = [self todayDotFrame];
 }
 
 - (void)drawRect:(CGRect)rect
@@ -102,6 +106,17 @@ CGFloat roundOnBase(CGFloat x, CGFloat base) {
 }
 
 #pragma mark - Custom Accessors
+
+- (UIView *)todayDot
+{
+    if (!_todayDot) {
+        _todayDot = [[UILabel alloc] initWithFrame:[self todayDotFrame]];
+        _todayDot.layer.cornerRadius = 4.5f;
+        _todayDot.backgroundColor = [UIColor redColor];
+        _todayDot.clipsToBounds = YES;
+    }
+    return _todayDot;
+}
 
 - (UILabel *)dateLabel
 {
@@ -192,6 +207,11 @@ CGFloat roundOnBase(CGFloat x, CGFloat base) {
     return CGRectMake(0.0f, 0.0f, width, width);
 }
 
+- (CGRect)todayDotFrame
+{
+    return CGRectMake(roundOnBase(CGRectGetWidth(self.frame) / 2 - 4.5f, [UIScreen mainScreen].scale), roundOnBase(80.5f, [UIScreen mainScreen].scale), 9.0f, 9.0f);
+}
+
 - (void)setMarkImage:(UIImage *)markImage
 {
     if (![_markImage isEqual:markImage]) {
@@ -219,6 +239,7 @@ CGFloat roundOnBase(CGFloat x, CGFloat base) {
     self.overlayImageView.hidden = !self.isHighlighted || self.isNotThisMonth || self.isOutOfRange;
     self.markImageView.hidden = !self.isMarked || self.isNotThisMonth || self.isOutOfRange;
     self.dividerImageView.hidden = self.isNotThisMonth;
+    self.todayDot.hidden = YES;
     
     if (self.isNotThisMonth) {
         self.dateLabel.textColor = [self notThisMonthLabelTextColor];
@@ -247,6 +268,7 @@ CGFloat roundOnBase(CGFloat x, CGFloat base) {
                 } else {
                     self.dateLabel.font = [self todayLabelFont];
                     self.dateLabel.textColor = [self todayLabelTextColor];
+                    self.todayDot.hidden = NO;
                 }
                 
             } else {
@@ -258,6 +280,7 @@ CGFloat roundOnBase(CGFloat x, CGFloat base) {
                     self.dateLabel.font = [self selectedTodayLabelFont];
                     self.dateLabel.textColor = [self selectedTodayLabelTextColor];
                     self.selectedDayImageView.image = [self selectedTodayImage];
+                    self.todayDot.hidden = NO;
                 }
             }
             

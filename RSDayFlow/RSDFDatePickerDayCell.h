@@ -37,6 +37,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// @name Accessing Subviews
 ///-------------------------
 
+@property (nonatomic, readonly, strong) UIView *todayDot;
+
 /**
  The label showing the cell's date.
  */
