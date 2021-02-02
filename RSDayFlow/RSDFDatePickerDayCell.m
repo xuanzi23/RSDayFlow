@@ -188,7 +188,8 @@ CGFloat roundOnBase(CGFloat x, CGFloat base) {
 
 - (CGRect)selectedImageViewFrame
 {
-    return CGRectMake(roundOnBase(CGRectGetWidth(self.frame) / 2 - 17.5f, [UIScreen mainScreen].scale), roundOnBase(5.5, [UIScreen mainScreen].scale), 35.0f, 35.0f);
+    CGFloat width = self.bounds.size.width;
+    return CGRectMake(0.0f, 0.0f, width, width);
 }
 
 - (void)setMarkImage:(UIImage *)markImage
@@ -382,12 +383,12 @@ CGFloat roundOnBase(CGFloat x, CGFloat base) {
 
 - (UIFont *)todayLabelFont
 {
-    return [UIFont fontWithName:@"HelveticaNeue" size:18.0f];
+    return [UIFont fontWithName:@"HelveticaNeue-Bold" size:19.0f];
 }
 
 - (UIColor *)todayLabelTextColor
 {
-    return [UIColor colorWithRed:0/255.0f green:121/255.0f blue:255/255.0f alpha:1.0f];
+    return [UIColor redColor];
 }
 
 - (UIFont *)selectedTodayLabelFont
@@ -397,7 +398,7 @@ CGFloat roundOnBase(CGFloat x, CGFloat base) {
 
 - (UIColor *)selectedTodayLabelTextColor
 {
-    return [UIColor whiteColor];
+    return [UIColor redColor];
 }
 
 - (UIColor *)selectedTodayImageColor
@@ -433,7 +434,7 @@ CGFloat roundOnBase(CGFloat x, CGFloat base) {
 
 - (UIColor *)selectedDayImageColor
 {
-    return [UIColor colorWithRed:255/255.0f green:59/255.0f blue:48/255.0f alpha:1.0f];
+    return [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
 }
 
 - (UIImage *)customSelectedDayImage
