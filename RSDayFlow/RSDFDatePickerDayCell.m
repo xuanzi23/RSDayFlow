@@ -213,7 +213,7 @@ CGFloat roundOnBase(CGFloat x, CGFloat base) {
 
 - (CGRect)todayDotFrame
 {
-    return CGRectMake(roundOnBase(CGRectGetWidth(self.frame) / 2 - 4.5f, [UIScreen mainScreen].scale), roundOnBase(90.5f, [UIScreen mainScreen].scale), 6.0f, 6.0f);
+    return CGRectMake(roundOnBase(CGRectGetWidth(self.frame) / 2 - 4.5f, [UIScreen mainScreen].scale), self.frame.size.height - 10.0f, 6.0f, 6.0f);
 }
 
 - (void)setMarkImage:(UIImage *)markImage
