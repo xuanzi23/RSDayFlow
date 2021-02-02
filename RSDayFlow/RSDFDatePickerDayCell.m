@@ -81,7 +81,6 @@ CGFloat roundOnBase(CGFloat x, CGFloat base) {
     [self addSubview:self.markImageView];
     [self addSubview:self.dividerImageView];
     [self addSubview:self.dateLabel];
-    [self addSubview:self.dateLabel];
     [self addSubview:self.todayDot];
     
     [self updateSubviews];
@@ -111,7 +110,7 @@ CGFloat roundOnBase(CGFloat x, CGFloat base) {
 {
     if (!_todayDot) {
         _todayDot = [[UILabel alloc] initWithFrame:[self todayDotFrame]];
-        _todayDot.layer.cornerRadius = 4.5f;
+        _todayDot.layer.cornerRadius = 3.0f;
         _todayDot.backgroundColor = [UIColor redColor];
         _todayDot.clipsToBounds = YES;
     }
@@ -172,6 +171,11 @@ CGFloat roundOnBase(CGFloat x, CGFloat base) {
         _markImageView = [[UIImageView alloc] initWithFrame:[self markImageViewFrame]];
         _markImageView.backgroundColor = [UIColor clearColor];
         _markImageView.contentMode = UIViewContentModeScaleAspectFit;
+        
+        UIView *overlay = [[UIView alloc] initWithFrame:CGRectMake(0, 0, _markImageView.frame.size.width, _markImageView.frame.size.height)];
+        [overlay setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.3]];
+        [_markImageView addSubview:overlay];
+        
         _markImageView.image = self.markImage;
     }
     return _markImageView;
@@ -209,7 +213,7 @@ CGFloat roundOnBase(CGFloat x, CGFloat base) {
 
 - (CGRect)todayDotFrame
 {
-    return CGRectMake(roundOnBase(CGRectGetWidth(self.frame) / 2 - 4.5f, [UIScreen mainScreen].scale), roundOnBase(80.5f, [UIScreen mainScreen].scale), 9.0f, 9.0f);
+    return CGRectMake(roundOnBase(CGRectGetWidth(self.frame) / 2 - 4.5f, [UIScreen mainScreen].scale), roundOnBase(90.5f, [UIScreen mainScreen].scale), 6.0f, 6.0f);
 }
 
 - (void)setMarkImage:(UIImage *)markImage
@@ -268,6 +272,7 @@ CGFloat roundOnBase(CGFloat x, CGFloat base) {
                 } else {
                     self.dateLabel.font = [self todayLabelFont];
                     self.dateLabel.textColor = [self todayLabelTextColor];
+                    self.todayDot.backgroundColor = [self todayLabelTextColor];
                     self.todayDot.hidden = NO;
                 }
                 
@@ -280,6 +285,7 @@ CGFloat roundOnBase(CGFloat x, CGFloat base) {
                     self.dateLabel.font = [self selectedTodayLabelFont];
                     self.dateLabel.textColor = [self selectedTodayLabelTextColor];
                     self.selectedDayImageView.image = [self selectedTodayImage];
+                    self.todayDot.backgroundColor = [self selectedTodayLabelTextColor];
                     self.todayDot.hidden = NO;
                 }
             }
@@ -287,6 +293,9 @@ CGFloat roundOnBase(CGFloat x, CGFloat base) {
             if (self.marked) {
                 self.markImageView.image = self.markImage;
                 self.dateLabel.textColor = [UIColor whiteColor];
+                if (self.isToday) {
+                    self.todayDot.backgroundColor = [UIColor whiteColor];
+                }
             } else {
                 self.markImageView.image = nil;
             }
@@ -458,9 +467,9 @@ CGFloat roundOnBase(CGFloat x, CGFloat base) {
 {
     UIImage *selectedTodayImage = [self customSelectedTodayImage];
     if (!selectedTodayImage) {
-        UIColor *selectedTodayImageColor = [self selectedTodayImageColor];
+        UIColor *selectedTodayImageColor = [self selectedDayImageColor];
         NSString *selectedTodayImageKey = [NSString stringWithFormat:@"img_selected_today_%@", [selectedTodayImageColor description]];
-        selectedTodayImage = [self ellipseImageWithKey:selectedTodayImageKey frame:self.selectedDayImageView.frame color:selectedTodayImageColor];
+        selectedTodayImage = [self squareImageWithKey:selectedTodayImageKey frame:self.selectedDayImageView.frame color:selectedTodayImageColor];
     }
     return selectedTodayImage;
 }
@@ -512,7 +521,7 @@ CGFloat roundOnBase(CGFloat x, CGFloat base) {
     if (!overlayImage) {
         UIColor *overlayImageColor = [self overlayImageColor];
         NSString *overlayImageKey = [NSString stringWithFormat:@"img_overlay_%@", [overlayImageColor description]];
-        overlayImage = [self ellipseImageWithKey:overlayImageKey frame:self.overlayImageView.frame color:overlayImageColor];
+        overlayImage = [self squareImageWithKey:overlayImageKey frame:self.overlayImageView.frame color:overlayImageColor];
     }
     return overlayImage;
 }
