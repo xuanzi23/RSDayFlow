@@ -92,7 +92,7 @@
 - (CGSize)selfHeaderReferenceSize
 {
     CGFloat selfHeaderReferenceWidth = CGRectGetWidth(self.collectionView.frame);
-    CGFloat selfHeaderReferenceHeight = 64.0f;
+    CGFloat selfHeaderReferenceHeight = 32.0f;
     
     return (CGSize){ selfHeaderReferenceWidth, selfHeaderReferenceHeight };
 }
