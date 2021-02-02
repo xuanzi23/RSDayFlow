@@ -130,7 +130,8 @@ CGFloat roundOnBase(CGFloat x, CGFloat base) {
 
 - (CGRect)markImageViewFrame
 {
-    return CGRectMake(roundOnBase(CGRectGetWidth(self.frame) / 2 - 4.5f, [UIScreen mainScreen].scale), roundOnBase(45.5f, [UIScreen mainScreen].scale), 9.0f, 9.0f);
+    CGFloat width = self.bounds.size.width;
+    return CGRectMake(0.0f, 0.0f, width, width);
 }
 
 - (UIImage *)markImage
