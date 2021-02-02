@@ -110,12 +110,12 @@
 
 - (CGFloat)selfMinimumLineSpacing
 {
-    return 2.0f;
+    return 1.0f;
 }
 
 - (CGFloat)selfMinimumInteritemSpacing
 {
-    return 2.0f;
+    return 1.0f;
 }
 
 @end
