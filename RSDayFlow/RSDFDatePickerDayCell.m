@@ -262,6 +262,7 @@ CGFloat roundOnBase(CGFloat x, CGFloat base) {
             
             if (self.marked) {
                 self.markImageView.image = self.markImage;
+                self.dateLabel.textColor = [UIColor whiteColor];
             } else {
                 self.markImageView.image = nil;
             }
