@@ -312,6 +312,26 @@ CGFloat roundOnBase(CGFloat x, CGFloat base) {
     return ellipseImage;
 }
 
+- (UIImage *)squareImageWithKey:(NSString *)key frame:(CGRect)frame color:(UIColor *)color
+{
+    UIImage *squareImage = [[self class] fetchObjectForKey:key withCreator:^id{
+        UIGraphicsBeginImageContextWithOptions(frame.size, NO, self.window.screen.scale);
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        
+        CGRect rect = frame;
+        rect.origin = CGPointZero;
+        
+        CGContextSetFillColorWithColor(context, color.CGColor);
+        CGContextFillRect(context, rect);
+        
+        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        return image;
+    }];
+    return squareImage;
+}
+
 - (UIImage *)rectImageWithKey:(NSString *)key frame:(CGRect)frame color:(UIColor *)color
 {
     UIImage *rectImage = [[self class] fetchObjectForKey:key withCreator:^id{
@@ -448,7 +468,7 @@ CGFloat roundOnBase(CGFloat x, CGFloat base) {
     if (!selectedDayImage) {
         UIColor *selectedDayImageColor = [self selectedDayImageColor];
         NSString *selectedDayImageKey = [NSString stringWithFormat:@"img_selected_day_%@", [selectedDayImageColor description]];
-        selectedDayImage = [self ellipseImageWithKey:selectedDayImageKey frame:self.selectedDayImageView.frame color:selectedDayImageColor];
+        selectedDayImage = [self squareImageWithKey:selectedDayImageKey frame:self.selectedDayImageView.frame color:selectedDayImageColor];
     }
     return selectedDayImage;
 }
