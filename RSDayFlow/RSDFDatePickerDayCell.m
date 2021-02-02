@@ -473,7 +473,7 @@ CGFloat roundOnBase(CGFloat x, CGFloat base) {
 
 - (UIColor *)dividerImageColor
 {
-    return [UIColor colorWithRed:200/255.0f green:200/255.0f blue:200/255.0f alpha:1.0f];
+    return [UIColor clearColor];
 }
 
 - (UIImage *)customDividerImage
