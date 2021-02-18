@@ -170,7 +170,7 @@ CGFloat roundOnBase(CGFloat x, CGFloat base) {
     if (!_markImageView) {
         _markImageView = [[UIImageView alloc] initWithFrame:[self markImageViewFrame]];
         _markImageView.backgroundColor = [UIColor clearColor];
-        _markImageView.contentMode = UIViewContentModeScaleAspectFill;
+        _markImageView.contentMode = UIViewContentModeScaleToFill;
         _markImageView.clipsToBounds = YES;
         
         CALayer *sublayer = [CALayer layer];
